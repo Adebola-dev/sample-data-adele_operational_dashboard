@@ -1,0 +1,58 @@
+Unknow python codes
+To launch libraries in jupyter notebook:
+import numpy as np - arrary arguments
+import pandas as pd - statistic dataframe
+import seaborn as sns
+import matplotlib as mpl- plots visualisation
+import matplotlib.pyplot as plt
+import IPython.display- IPython.core.display.DisplayObject. Create an audio object. When this object is returned by an input cell or passed to the display function, it will result in Audio controls being displayed in the frontend (only works in the notebook). data (numpy array, list, unicode, str or bytes) 
+import warnings
+warnings.filterwarnings('ignore') - there are some codes that gives an output of warning. asking python to launch warning and igorne the warning outpout to be displayed.
+from colorama in python - Description. Provides a simple cross-platform API to print colored terminal text from Python applications. ANSI escape character sequences are commonly used to produce colored terminal text on Macs and Unix. Colorama provides some shortcuts to generate these sequences, and makes them work on Windows too.
+import statsmodels.api as sm - statsmodels is a Python module that provides classes and functions for the estimation of many different statistical models, as well as for conducting statistical tests, and statistical data exploration. It supports specifying models using R-style formulas and pandas DataFrames. Statsmodels is a Python package that provides a complement to scipy for statistical computations including descriptive statistics and estimation and inference for statistical models
+
+- Strip(): The Python strip() method removes any spaces or specified characters at the start and end of a string. strip() returns a new string without the characters you have specified to remove.
+- Mssing value: 
+	How can pandas replace missing values with median? python codes are 
+	USING THE BOXPLOT AND DISTRIBUTION PLOT TO DETERMINE OUTLINERS AND SKWENESS OF DATASET
+	For symmetric data distribution, one can use the mean value for imputing missing values. 
+	Mean: data=data.fillna(data.mean()) -  For skewed data 'mean' is not recommended to replace missing value, but it is recommended for symmetric data. Note*** that imputing missing data with mean values can only be done with numerical data.
+	Median: data=data.fillna(data.median()) - When the data is skewed, it is good to consider using median value for replacing the missing values. Note that imputing missing data with median value can only be done with numerical data.
+	Mode:df['DATA_COL'] = df['DATA_COL'].fillna(df['DATA_COL'].mode()[0]) - When the data is skewed, it is good to consider using mode values for replacing the missing values. Note that imputing missing data with mode values can be done with numerical and categorical data.
+	Standard Deviation: data=data.fillna(data.std())
+	Min: data=data.fillna(data.min())
+	Max: data=data.fillna(data.max())
+- To Plot boxplot 
+	fig.ax=plt.subplots(figsize=(10,6))
+	sns.boxplot(df.NAME OF THE COLUMN INTERETED)
+- To Plot distribution plots
+	fig.ax=plt.subplots(figsize=(10,6))
+	sns.distplot(df.NAME OF THE COLUMN INTERETED)
+- To remove space a dataset:
+	DATAFRAME_NAME.columns=[col.strip() for col in DATAFRAME_NAME]
+- To replace all missing values in datacolumn with median values and change the datatype from object to float:
+	DATAFRAME_NAME['Income']=DATAFRAME_NAME['Income'].fillna(DATAFRAME_NAME['Income'].median()).astype(float)
+- Indept view of the dataframe rows and check for missing value:
+	DATAFRAME_NAME.isnull().sum()
+- To change date format that are not the same in the column:
+	DATAFRAME_NAME['Dt_Customer']=pd.to_datetime(DATAFRAME_NAME['Dt_Customer'],format='%m/%d/%y')
+- To call on some certain columns in the dataframe:
+	def datainfo(DATAFRAME_NAME):return pd.DataFrame([(col,DATAFRAME_NAME[col].nunique(),DATAFRAME_NAME[col].dtype,DATAFRAME_NAME[col].isna().sum(),DATAFRAME_NAME[col].unique()[:5]) for col in DATAFRAME_NAME.columns],columns=['name','nunique','dtype','missing','value :5'])
+        datainfo(DATAFRAME_NAME)
+- Slice; to modify or delete 
+DATAFRAME_NAME=DATAFRAME_NAME.loc[df.Year_Birth>DATA_ROW]. For instance, df=df.loc[df.Year_Birth>1920] #slice dataset to modify dataset value less than the year 1920.
+
+- Chi-square: chi2_contingency(pd.crosstab(df.Var1, df.Var2)) after launching the library in parenthesis {from scipy.stats import chi2_contingency}.
+- Multiple Regression: redefine the independent variables as X argument and dependent variable as y argument, after launching the library in parenthesis {from sklearn import linear_model}
+  fit() that takes the independent and dependent values as parameters and fills the regression object with data that describes the relationship. 
+  So therefore, regr = linear_model.LinearRegression(); regr.fit(X, y) argument is written. And predictedX= regr.predict([[y1,y2,y3...]]) all y's should be integers.
+- Regression coefficient is used to The coefficient is a factor that describes the relationship with an unknown variable. To determine the increase or decrease in any of the independent variables.
+ (regr.coef_)
+
+-Ordinary Least Square MODEL - X = sm.add_constant(X) # adding a constant 
+				   model = sm.OLS(Y, X).fit()
+				   predictions = model.predict(X) 
+                                   df_model = model.summary()
+                                   df_model
+
+ 
