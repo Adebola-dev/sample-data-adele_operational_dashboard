@@ -1,1 +1,56 @@
-https://learngis2.maps.arcgis.com/apps/dashboards/afdee35409414812b440d48f7e934173#mode=edit
+{
+  "type": <Type of sample: Widget, Map Tool, Feature Action>,
+  "name": <A nice name>,
+  "description": <A nice description>,
+  "useDataFromView": <true|false>,
+  "usePortalServices": <true|false>
+  "runtime" : {
+   "path": <The relative path of the runtime web page (the path from under the sample folder)>,
+   "iconPath": <The relative path of the icon representing the sample (the path from under the sample folder)>,
+  },
+  "configuration": {
+   “path": <The relative path of the configuration web page (the path from under the sample folder)>,
+   "requiresDataSource": <true|false>,
+   "requiresMapWidget": <true|false>,
+   "supportFeatureActions": <true|false>
+  },
+  "credits": "Esri, http://www.esri.com"
+}
+Copy the following blueprint into your sample html file:
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+
+  <!-- Add your sample style here -->
+
+</head>
+
+<!-- Add your sample configuration or runtime html here -->
+<!-- You can also use Dijit -->
+
+<script>
+  var extensionLocation = location.pathname.replace(/\/[^/]+$/, '');
+  var dojoConfig = {
+    async: true, // Anything is async from now on
+    locale: location.search.match(/locale=([\w\-]+)/) ? RegExp.$1 : "en-us", // The locale of the Operations Dashboard
+    host application is passed by url query params
+    paths: {
+      "extension": extensionLocation
+    }
+  };
+</script>
+<script src="//js.arcgis.com/3.20"></script>
+<script>
+  require([
+    "dojo/parser",
+    "dojo/domReady!"
+  ], function(parser){
+    parser.parse();
+  });
+</script>
+<!-- Add you additional javascript scripts here-->
+
+</body>
+</html>
